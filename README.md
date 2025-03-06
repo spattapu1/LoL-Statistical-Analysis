@@ -1,2 +1,2 @@
-# LoL-Statistical-Analysis
+# Red or Blue?
  DSC80 Project
