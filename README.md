@@ -1,5 +1,5 @@
-# Which side wins Red or Blue
-## By: Shriya Pattapu and Milo Palmquist 
+# Which Side wins Red or Blue ?
+By: Shriya Pattapu and Milo Palmquist 
 
 
 ## Introduction
