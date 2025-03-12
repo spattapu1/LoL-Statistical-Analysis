@@ -15,7 +15,7 @@ In the League of Legends community, many players think that there is an advantag
 Using this dataset, we can see if even the best of the best are safe from the alleged effect of this coin flip. Assuming the skills of each team are similar, then the proportion of wins on one side should not be significantly different from the other.
 
 ### Introduction of Columns
-The original dataset contains 150588 rows and 161 columns. We removed columns that are not relavent in our analysis and maintained columns that represent different key aspects of essential gameplay within games that are relavent. These 12 columns are discribed below: 
+The original dataset contains 150588 rows and 161 columns. We removed columns that are not relavent in our analysis and maintained columns that represent different key aspects of gameplay within games that are relavent. These 12 columns are discribed below: 
 
 - **`gameid`**: A unique identifier of the each game played between two teams.
 - **`league`**:
