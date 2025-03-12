@@ -1,4 +1,6 @@
-# By: Shriya Pattapu and Milo Palmquist
+# Which side wins Red or Blue
+## By: Shriya Pattapu and Milo Palmquist 
+
 
 ## Introduction
 
