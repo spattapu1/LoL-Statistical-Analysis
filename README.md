@@ -1,4 +1,4 @@
-# Which Side wins Red or Blue ?
+# Which Side Wins Red or Blue ?
 By: Shriya Pattapu and Milo Palmquist 
 
 
@@ -18,14 +18,14 @@ Using this dataset, we can see if even the best of the best are safe from the al
 ### Introduction of Columns
 The dataset has several columns, and the main ones we will focus on are:
 
-- **`gameid`**: A unique identifier of the individual game played between two teams.
+- **`gameid`**: A unique identifier of the each game played between two teams.
 - **`side`**: The side of the map that a particular team within a game played on. 'side' is always 'Blue' or 'Red' in our data.
 - **`result`**: A binary column set to 1 indicating a team won and 0 indicating a team lost that game.
-- **`earnedgold`**: The amount of gold earned excluding starting gold, purchases, passive gold, and post-death per team in a game.
-- **`teamkills`**: The total number of enemy champions a team successfully kills during the game.
-- **`damagetochampions`**: The total amount of damage taken to individual champions on each team during the game.
+- **`earnedgold`**: The amount of gold earned excluding starting gold, and passive gold.
+- **`teamkills`**: The total number of times a team successfully killed an enemy champion during the game.
+- **`damagetochampions`**: The total amount of damage given to enemy champions on each team during the game.
 - **`xpat25`**: a measure of how much experience a player has accumulated by the 25-minute mark, reflecting their overall level progression and efficiency in gaining XP compared to the average or their opponent.
-- **`csat25`**: Creep Score (CS) at 25 minutes, a measure of how many minions a team has killed, which contributes to gold and experience gain.
+- **`csat25`**:  a measure of how many minions and monsters a team has killed by the 25-minute mark, which contributes to gold and experience gain.
 - **`dragons`**: The number of dragons secured by the team during the game.
 - **`barons`**: The number of barons secured by the team during the game.
 
@@ -46,23 +46,20 @@ Here’s the first five rows of the cleaned dataset named teams:
 
 ### Univariate Analysis:
 
-#### Histogram of Dragons:
-We plotted a histogram of the number of dragons secured by each team. This helps us analyze if securing dragons correlates with winning.
+#### Earned Gold Histogram:
+<iframe src="iframe_figures/dis-of-earnedgold-per-team.html" width="800" height="600" frameborder="0"></iframe>
 
 #### Total Kills Histogram:
 A histogram of total kills helps us explore whether there's a correlation between kills and game performance, including whether blue side teams tend to have more kills.
+<iframe src="iframe_figures/dis-of-teamkills-per-team.html" width="800" height="600" frameborder="0"></iframe>
 
 ### Bivariate Analysis:
 
 #### Total Kills Bivariate 1:
-
-
 <iframe src="iframe_figures/figure_11.html" width="800" height="600" frameborder="0"></iframe>
 
 #### Total Earned Gold Bivariate 2:
-
-
-<iframe src="iframe_figures/figure_13.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="iframe_figures/total-earned-gold-by-side.html" width="800" height="600" frameborder="0"></iframe>
 
 
 ### Interesting Aggregates
