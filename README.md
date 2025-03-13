@@ -1,19 +1,3 @@
-<script>
-  window.onload = function () {
-    var iframe = document.getElementById('teamKillsPlot');
-    iframe.onload = function () {
-      var plot = iframe.contentWindow.document.getElementsByClassName('plotly-graph-div')[0];
-      if (plot) {
-        Plotly.relayout(plot, {
-          autosize: true,
-          responsive: true,
-          margin: { l: 40, r: 40, t: 40, b: 40 },
-          height: 600
-        });
-      }
-    };
-  };
-</script>
 
 # Which Side Wins Red or Blue ?
 By: Shriya Pattapu and Milo Palmquist 
@@ -71,7 +55,7 @@ We conducted a univariate analysis on the earned gold per team.
 The histogram shows a normal distribution meaning that earned gold per team is symmetrically distributed around the mean. The normal shape also implies that earned gold is likely independently and identically distributed (i.i.d.), indicating that the underlying process generating earned gold is consistent and stable across teams, therefore is a reliable statistic for analyzing team behavior.
 
 We also conducted a univariate analysis on the team kills per team. 
-<iframe id="teamKillsPlot" src="assets/TeamKills.html" style="border: none; padding: 0; margin: 0; width: 100%; height: 600px;"></iframe>
+<iframe src="assets/TeamKills.html" width="800" height="600" frameborder="0"></iframe> 
 The histogram shows a relativley normal distribution that is right-skewed meaning that team kills per team is mostly symmetrically distributed around the mean though the mean is lower and few teams obtain an excpetionally high number of kills. The relativley normal shape also implies that team kills is likely independently and identically distributed (i.i.d.), the way players obtain kills is relavtively consistent across teams (though some are much higher) and, therefore is a reliable statistic for analyzing team behavior.
 
 ### Bivariate Analysis:
@@ -86,7 +70,7 @@ In this second visualization, we look at how team kills varies depending on the 
 Both overlapping distributions still have a similar overall direction, but the shape of the distributions look slightly different which may suggest that teamkills could be an indicator of side. It's at least likely a stronger indicator of side then earned gold. 
 
 ### Interesting Aggregates
-Here are some intresting aggregates we can explore wutgun the data: 
+Here are some intresting aggregates we can explore within the data: 
 
 | side   |   result |   teamkills |   earnedgold |   damagetochampions |   xpat25 |   csat25 |   dragons |   barons |
 |:-------|---------:|------------:|-------------:|--------------------:|---------:|---------:|----------:|---------:|
