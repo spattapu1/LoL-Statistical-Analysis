@@ -96,11 +96,7 @@ First, let's take a look wether the missingness of **`xpat25`** is dependent on 
 
 **Significance Level:** 0.5
 
-Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the K-S statistic is shown below. 
-
-<iframe src="assets/EDKS.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe>
-
-In this permutation test, the p-value is less than the 0.5 which means we reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does infact depend on the gamelength column.
+Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the K-S statistic is shown below. <iframe src="assets/EDKS.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe> In this permutation test, the p-value is less than the 0.5 which means we reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does infact depend on the gamelength column.
 
 Now, let's take a look wether the missingness of **`xpat25`** is dependent on **`side`**. 
 
@@ -120,12 +116,12 @@ The distribution of **`side`** when **`xpat25`** is missing and the distribution
 | Red    |                  0.49995 |                0.500747 |
 
 Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the Total Variation Test statistic is shown below. 
-
 <iframe src="assets/EDTVD.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe>
-
 In this permutation test, the p-value is greater than the 0.5 which means we fail to reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does not depend on the **`side`** column.
 
 ## Hypothesis Testing
+
+In our hypothesis test, 
 
 **Null Hypothesis**: The average team kills for blue and red sides is the same.
 
@@ -135,6 +131,7 @@ In this permutation test, the p-value is greater than the 0.5 which means we fai
 
 **Significance Level**: 5 Percent
 
+Below is the sampling distribution for the test statistic:
 <iframe src="assets/HypTesyDist.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe>
 
 
