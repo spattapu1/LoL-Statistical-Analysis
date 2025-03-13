@@ -54,7 +54,7 @@ We conducted a univariate analysis on the earned gold per team.
 The histogram shows a normal distribution meaning that earned gold per team is symmetrically distributed around the mean. The normal shape also implies that earned gold is likely independently and identically distributed (i.i.d.), indicating that the underlying process generating earned gold is consistent and stable across teams, therefore is a reliable statistic for analyzing team behavior.
 
 We also conducted a univariate analysis on the team kills per team. 
-<iframe src="assets/TeamKills.html" width="800" height="600" frameborder="0"></iframe> 
+<iframe src="assets/TeamKills.html" style="border: none; padding: 0; margin: 0; width: 100%; height: 600px;"></iframe>
 The histogram shows a relativley normal distribution that is right-skewed meaning that team kills per team is mostly symmetrically distributed around the mean though the mean is lower and few teams obtain an excpetionally high number of kills. The relativley normal shape also implies that team kills is likely independently and identically distributed (i.i.d.), the way players obtain kills is relavtively consistent across teams (though some are much higher) and, therefore is a reliable statistic for analyzing team behavior.
 
 ### Bivariate Analysis:
