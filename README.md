@@ -123,7 +123,7 @@ In this permutation test, the p-value is greater than the 0.5 which means we fai
 
 ## Hypothesis Testing
 
-In our hypothesis test, 
+In our hypothesis test, we want to discern wether or not there is a significant difference between the average team kills for blue side and red side. We want to understand the relationship side between being on the red or blue side and average kills per side. The motivation comes from want to understand wether Blue side actually more likely to win then Red side, and since team kills are likely related to the result of the game, making it an important test to explore.
 
 **Null Hypothesis**: The average team kills for blue and red sides is the same.
 
