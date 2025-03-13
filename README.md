@@ -61,11 +61,11 @@ The histogram shows a relativley normal distribution that is right-skewed meanin
 For our bivariate analysis, we decided to focus on **`side`** which is central to much of our analysis later on, and may potentially provide insights about the data.  
 
 In this first visualization, we look at how earned gold varies depending on the side a team is on. 
-<iframe src="assets/EarnedGoldSide.html" width="800" height="500"></iframe> 
+<iframe src="assets/EarnedGoldSide.html" width="800" height="500px"></iframe> 
 Both overlapping distributions are still normal, so we can ascertain the same as prior as well as the fact side is likely not a strong indicator of earned gold. 
 
 In this second visualization, we look at how team kills varies depending on the side a team is on. 
-<iframe src="assets/TeamKillsSide.html" width="800" height="600" frameborder="0"></iframe> 
+<iframe src="assets/TeamKillsSide.html" width="800" height="500px" frameborder="0"></iframe> 
 Both overlapping distributions still have a similar overall direction, but the shape of the distributions look slightly different which may suggest that teamkills could be an indicator of side. It's at least likely a stronger indicator of side then earned gold. 
 
 ### Interesting Aggregates
