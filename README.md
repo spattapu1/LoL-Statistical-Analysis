@@ -110,8 +110,7 @@ The distribution of **`side`** when **`xpat25`** is missing and the distribution
 | Red    |                  0.49995 |                0.500747 |
 
 Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the Total Variation Test statistic is shown below. 
-<iframe src="assets/EDTVD.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe>
-In this permutation test, the p-value is greater than the 0.5 which means we fail to reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does not depend on the **`side`** column.
+<iframe src="assets/EDTVD.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe> In this permutation test, the p-value is greater than the 0.5 which means we fail to reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does not depend on the **`side`** column.
 
 ## Hypothesis Testing
 
@@ -127,7 +126,6 @@ In our hypothesis test,
 
 Below is the sampling distribution for the test statistic:
 <iframe src="assets/HypTesyDist.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe>
-
 
 ## Framing a Prediction Problem
 Previously, we have found that being on blue side may have a significant affect on team kills. Since statistics for blue and red side are different, are there specific statistics of gameplay like xpat25, csat25, barons, dragons, etc. that are higher as a result of being on Blue or Red side, and can we use these statistics to predict which side the player was on?
