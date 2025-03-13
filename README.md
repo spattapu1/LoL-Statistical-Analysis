@@ -49,18 +49,24 @@ Here’s the first five rows of the cleaned dataset named teams:
 | ESPORTSTMNT01_2690227 | LCKC     | Blue   | KT Rolster Challengers   | 00:32:52     |        1 |          14 |        41372 |               67376 |    52441 |      912 |         4 |        1 |
 
 ### Univariate Analysis:
-We conducted a univariate analysis on the earned gold per team. <iframe src="assets/EarnedGold.html" width="800" height="600" frameborder="0"></iframe> The histogram shows a normal distribution meaning that earned gold per team is symmetrically distributed around the mean. The normal shape also implies that earned gold is likely independently and identically distributed (i.i.d.), indicating that the underlying process generating earned gold is consistent and stable across teams, therefore is a reliable statistic for analyzing team behavior.
+We conducted a univariate analysis on the earned gold per team. 
+<iframe src="assets/EarnedGold.html" width="800" height="600" frameborder="0"></iframe> 
+The histogram shows a normal distribution meaning that earned gold per team is symmetrically distributed around the mean. The normal shape also implies that earned gold is likely independently and identically distributed (i.i.d.), indicating that the underlying process generating earned gold is consistent and stable across teams, therefore is a reliable statistic for analyzing team behavior.
 
-We also conducted a univariate analysis on the team kills per team. <iframe src="assets/TeamKills.html" width="800" height="600" frameborder="0"></iframe> The histogram shows a relativley normal distribution that is right-skewed meaning that team kills per team is mostly symmetrically distributed around the mean though the mean is lower and few teams obtain an excpetionally high number of kills. The relativley normal shape also implies that team kills is likely independently and identically distributed (i.i.d.), the way players obtain kills is relavtively consistent across teams (though some are much higher) and, therefore is a reliable statistic for analyzing team behavior.
+We also conducted a univariate analysis on the team kills per team. 
+<iframe src="assets/TeamKills.html" width="800" height="600" frameborder="0"></iframe> 
+The histogram shows a relativley normal distribution that is right-skewed meaning that team kills per team is mostly symmetrically distributed around the mean though the mean is lower and few teams obtain an excpetionally high number of kills. The relativley normal shape also implies that team kills is likely independently and identically distributed (i.i.d.), the way players obtain kills is relavtively consistent across teams (though some are much higher) and, therefore is a reliable statistic for analyzing team behavior.
 
 ### Bivariate Analysis:
 For our bivariate analysis, we decided to focus on **`side`** which is central to much of our analysis later on, and may potentially provide insights about the data.  
 
 In this first visualization, we look at how earned gold varies depending on the side a team is on. 
-<iframe src="assets/EarnedGoldSide.html" width="800" height="600" frameborder="0"></iframe> Both overlapping distributions are still normal, so we can ascertain the same as prior as well as the fact side is likely not a strong indicator of earned gold. 
+<iframe src="assets/EarnedGoldSide.html" width="800" height="600" frameborder="0"></iframe> 
+Both overlapping distributions are still normal, so we can ascertain the same as prior as well as the fact side is likely not a strong indicator of earned gold. 
 
 In this second visualization, we look at how team kills varies depending on the side a team is on. 
-<iframe src="assets/TeamKillsSide.html" width="800" height="600" frameborder="0"></iframe> Both overlapping distributions still have a similar overall direction, but the shape of the distributions look slightly different which may suggest that teamkills could be an indicator of side. It's at least likely a stronger indicator of side then earned gold. 
+<iframe src="assets/TeamKillsSide.html" width="800" height="600" frameborder="0"></iframe> 
+Both overlapping distributions still have a similar overall direction, but the shape of the distributions look slightly different which may suggest that teamkills could be an indicator of side. It's at least likely a stronger indicator of side then earned gold. 
 
 ### Interesting Aggregates
 Here are some intresting aggregates we can explore wutgun the data: 
@@ -90,7 +96,9 @@ First, let's take a look wether the missingness of **`xpat25`** is dependent on 
 
 **Significance Level:** 0.5
 
-Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the K-S statistic is shown below. <iframe src="assets/EDKS.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe> In this permutation test, the p-value is less than the 0.5 which means we reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does infact depend on the gamelength column.
+Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the K-S statistic is shown below. 
+<iframe src="assets/EDKS.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe> 
+In this permutation test, the p-value is less than the 0.5 which means we reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does infact depend on the gamelength column.
 
 Now, let's take a look wether the missingness of **`xpat25`** is dependent on **`side`**. 
 
@@ -110,7 +118,8 @@ The distribution of **`side`** when **`xpat25`** is missing and the distribution
 | Red    |                  0.49995 |                0.500747 |
 
 Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the Total Variation Test statistic is shown below. 
-<iframe src="assets/EDTVD.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe> In this permutation test, the p-value is greater than the 0.5 which means we fail to reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does not depend on the **`side`** column.
+<iframe src="assets/EDTVD.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe> 
+In this permutation test, the p-value is greater than the 0.5 which means we fail to reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does not depend on the **`side`** column.
 
 ## Hypothesis Testing
 
