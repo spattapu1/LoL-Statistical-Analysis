@@ -86,7 +86,7 @@ We do not think there are any columns in the dataset that are NMAR. We believe t
 ### Missingness Dependency
 In this subsection, we will test if the missingness of the **`xpat25`** column depends on other columns. The other two columns that we will check our missingness dependency on are **`side`**, and **`gamelength`**. 
 
-First, let's take a look wether the missingness of **`xpat25`** is dependent on **gamelength**. 
+First, let's take a look wether the missingness of **`xpat25`** is dependent on **`gamelength`**. 
 
 **Null Hypothesis:** The distribution of **`gamelength`** when **`xpat25`** is missing is the same as the distribution of **`gamelength`** when **`xpat25`** is not missing. 
 
@@ -123,7 +123,7 @@ In this permutation test, the p-value is greater than the 0.5 which means we fai
 
 ## Hypothesis Testing
 
-In our hypothesis test, we want to discern wether or not there is a significant difference between the average team kills for blue side and red side. We want to understand the relationship side between being on the red or blue side and average kills per side. The motivation comes from want to understand wether Blue side actually more likely to win then Red side, and since team kills are likely related to the result of the game, making it an important test to explore.
+In our hypothesis test, we aim to determine whether there is a significant difference between the average team kills for the blue side and the red side. We want to understand the relationship between being on the red or blue side and the average kills per side. The motivation comes from wanting to determine whether the blue side is actually more likely to win than the red side, as team kills are likely related to the game outcome, making this an important test to explore.
 
 **Null Hypothesis**: The average team kills for blue and red sides is the same.
 
