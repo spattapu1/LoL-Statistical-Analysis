@@ -18,9 +18,9 @@ Using this dataset, we can see if even the best of the best are safe from the al
 The dataset has several columns, and the main ones we will focus on are:
 
 - **`gameid`**: A unique identifier of the each game played between two teams.
-- **`league`**:
+- **`league`**: The string that denotes the name of the specific league tournament in which the match took place.
 - **`side`**: The side of the map that a particular team within a game played on. 'side' is always 'Blue' or 'Red' in our data.
-- **`teamname`**:
+- **`teamname`**: A string of the name of the team playing the game.
 - **`result`**: A binary column set to 1 indicating a team won and 0 indicating a team lost that game.
 - **`earnedgold`**: The amount of gold earned excluding starting gold, and passive gold.
 - **`teamkills`**: The total number of times a team successfully killed an enemy champion during the game.
@@ -40,31 +40,26 @@ We only train our final model on games that are 25 minutes or longer, so later i
 
 Here’s the first five rows of the cleaned dataset named teams:
 
-| gameid                | league   | side   | teamname                | result | teamkills | earnedgold | damagetochampions | xpat25 | csat25 | dragons | barons |
-|-----------------------|----------|--------|-------------------------|--------|-----------|------------|-------------------|--------|--------|---------|--------|
-| ESPORTSTMNT01_2690210 | LCKC     | Blue   | BRION Challengers        | 0      | 9         | 28222      | 56560             | 45960  | 767    | 1       | 0      |
-| ESPORTSTMNT01_2690210 | LCKC     | Red    | Nongshim Esports Academy | 1      | 19        | 33769      | 79912             | 49931  | 864    | 3       | 0      |
-| ESPORTSTMNT01_2690219 | LCKC     | Blue   | T1 Esports Academy       | 0      | 3         | 34688      | 59579             | 49409  | 895    | 1       | 0      |
-| ESPORTSTMNT01_2690219 | LCKC     | Red    | Liiv SANDBOX Youth       | 1      | 16        | 48063      | 74855             | 57155  | 928    | 4       | 2      |
-| ESPORTSTMNT01_2690227 | LCKC     | Blue   | KT Rolster Challengers   | 1      | 14        | 41372      | 67376             | 52441  | 912    | 4       | 1      |
-
+| gameid                | league   | side   | teamname                 | gamelength   |   result |   teamkills |   earnedgold |   damagetochampions |   xpat25 |   csat25 |   dragons |   barons |
+|:----------------------|:---------|:-------|:-------------------------|:-------------|---------:|------------:|-------------:|--------------------:|---------:|---------:|----------:|---------:|
+| ESPORTSTMNT01_2690210 | LCKC     | Blue   | BRION Challengers        | 00:28:33     |        0 |           9 |        28222 |               56560 |    45960 |      767 |         1 |        0 |
+| ESPORTSTMNT01_2690210 | LCKC     | Red    | Nongshim Esports Academy | 00:28:33     |        1 |          19 |        33769 |               79912 |    49931 |      864 |         3 |        0 |
+| ESPORTSTMNT01_2690219 | LCKC     | Blue   | T1 Esports Academy       | 00:35:14     |        0 |           3 |        34688 |               59579 |    49409 |      895 |         1 |        0 |
+| ESPORTSTMNT01_2690219 | LCKC     | Red    | Liiv SANDBOX Youth       | 00:35:14     |        1 |          16 |        48063 |               74855 |    57155 |      928 |         4 |        2 |
+| ESPORTSTMNT01_2690227 | LCKC     | Blue   | KT Rolster Challengers   | 00:32:52     |        1 |          14 |        41372 |               67376 |    52441 |      912 |         4 |        1 |
 
 ### Univariate Analysis:
 
-#### Earned Gold Histogram:
-<iframe src="iframe_figures/dis-of-earnedgold-per-team.html" width="800" height="600" frameborder="0"></iframe>
-
-#### Total Kills Histogram:
-A histogram of total kills helps us explore whether there's a correlation between kills and game performance, including whether blue side teams tend to have more kills.
-<iframe src="iframe_figures/dis-of-teamkills-per-team.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="assets/EarnedGold.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="assets/TeamKills.html" width="800" height="600" frameborder="0"></iframe>
 
 ### Bivariate Analysis:
 
 #### Total Kills Bivariate 1:
-<iframe src="iframe_figures/figure_11.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="assets/TeamKillsSide.html" width="800" height="600" frameborder="0"></iframe>
 
 #### Total Earned Gold Bivariate 2:
-<iframe src="iframe_figures/total-earned-gold-by-side.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="assets/EarnedGoldSide.html" width="800" height="600" frameborder="0"></iframe>
 
 ### Interesting Aggregates
 Here are some intresting aggregates we can explore wutgun the data: 
