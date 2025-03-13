@@ -24,6 +24,7 @@ The dataset has several columns, and the main ones we will focus on are:
 - **`result`**: A binary column set to 1 indicating a team won and 0 indicating a team lost that game.
 - **`earnedgold`**: The amount of gold earned excluding starting gold, and passive gold.
 - **`teamkills`**: The total number of times a team successfully killed an enemy champion during the game.
+- **`gamelength`**: The length of a game in seconds. 
 - **`damagetochampions`**: The total amount of damage given to enemy champions on each team during the game.
 - **`xpat25`**: a measure of how much experience a player has accumulated by the 25-minute mark, reflecting their overall level progression and efficiency in gaining XP compared to the average or their opponent.
 - **`csat25`**:  a measure of how many minions and monsters a team has killed by the 25-minute mark, which contributes to gold and experience gain.
@@ -33,9 +34,9 @@ The dataset has several columns, and the main ones we will focus on are:
 ## Data Cleaning and Exploratory Data Analysis
 
 ### Data Cleaning:
-The original dataset contains data that pertains to individual players of a team as well as data relavent to the team as a whole. So only kept data pertaining to the entire team within a game rather then all the players. This significantly reduces the amount of rows within out cleaned data. We also only wanted data pertaining to complete games, not partial games, as partial games do not contain timed data like creep score or xp at different times which is why we chose to excluded it.
+The original dataset contains data that pertains to individual players of a team as well as data relavent to the team as a whole. So only kept data pertaining to the entire team within a game rather then all the players. This significantly reduces the amount of rows within out cleaned data. We also only wanted data pertaining to complete games, not partial games, as partial games do not contain timed data like creep score or xp at different times which is why we chose to excluded it. We also decided to convert the gamelength column from seconds to minutes for better readability. 
 
-We only train our final model on games that are 25 minutes or longer. So we queried out games with a 'gamelength' less than 1500 inorder to ensure there are no missing values in xpat25 or csat25. Most games are longer then 25 minutes and on average games are 30 minutes, we want our final model to make classifications for majority of games, not outliers. 
+We only train our final model on games that are 25 minutes or longer, so later in our prediction models,we queried out games with a 'gamelength' less than 25 minutes in order to ensure there are no missing values in xpat25 or csat25. Most games are longer then 25 minutes and on average games are 30 minutes, we want our final model to make classifications for majority of games, not outliers. 
 
 Here’s the first five rows of the cleaned dataset named teams:
 
