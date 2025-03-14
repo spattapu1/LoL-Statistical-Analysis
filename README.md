@@ -143,7 +143,7 @@ As a result of the hypothesis test that we performed, we achieved a p-value of 0
 
 Previously, we have found that being on blue side may have a significant affect on team kills. Since statistics for blue and red side are different, are there specific statistics of gameplay like xpat25, csat25, barons, dragons, etc. that are higher as a result of being on Blue or Red side; Can we use these statistics to predict which side the player was on?
 
-To address this question, we pose this prediction problem that can be answered with a binary classification model: Based on the difference in in-game statistics can we predict wether the winning side of a game was blue or red?. This allows for our classification model to have more accurate measures of differences between sides as apposed to general in-game statistics that are not in relation to the other side. Thus our response variable is wether the winner was red or blue which is included in the differences between team statistics dataframe. A few lines of this dataframe a pictured below:
+To address this question, we pose this prediction problem that can be answered with a binary classification model: Based on the difference in in-game statistics can we predict wether the winning side of a game was blue or red?. This allows for our classification model to have more accurate measures of differences between sides as apposed to general in-game statistics that are not in relation to the other side. Thus our response variable is wether the winner was red or blue which is included in the differences between team statistics dataframe. A few rows of this dataframe a pictured below:
 
 |   teamkills |   earnedgold |   damagetochampions |   xpat25 |   csat25 |   dragons |   barons |
 |------------:|-------------:|--------------------:|---------:|---------:|----------:|---------:|
@@ -164,3 +164,24 @@ The information that we would know at the time of prediction for the final model
 ## Final Model
 
 ## Fairness Analysis
+In this section we want to evaluate wether or not our model is fair, meaning that it performs the same for games within a group and games outside of the group.
+
+The question we pose to answer an aspect of this is: Does our model perform suboptimally for games played in the LCK league compared to other leagues?
+
+**Group X:** Games played within the LCK league
+
+**Group Y:** Games played outside of the LCK league
+
+**Evaluation Metric:** Accuracy
+
+**Null Hypothesis:** Our model is fair, and its accuracy between games played in the LCK league and games played in the others leagues is the same.
+
+**Alternative Hypothesis:** Our model is not fair, and its accuracy for games played in the LCK league are greater then for games not in the LCK league. 
+
+**Test-Stat:** Difference in accuracy(Not LCK - LCK)
+
+**Significance Level:** 0.05
+
+<iframe src="assets/fairness.html" width="800" height="600" frameborder="0"></iframe>
+
+After performing a permuatation test, we got a resulting p-value of 1, which is greater than our siginficance value, meaning we fail to reject our null hypothesis. This means that our model maintains a similar accuracy score for games played with LCK and outside LCK, meaning our model is fair and unbiased towards LCK league games. 
