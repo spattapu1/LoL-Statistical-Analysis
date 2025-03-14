@@ -62,7 +62,7 @@ The histogram shows a relativley normal distribution that is right-skewed meanin
 For our bivariate analysis, we decided to focus on **`side`** which is central to much of our analysis later on, and may potentially provide insights about the data.  
 
 In this first visualization, we look at how earned gold varies depending on the side a team is on. 
-<iframe src="assets/EarnedGoldSide.html" width="800" height="500px"></iframe> 
+<iframe src="assets/EarnedGoldSide.html" width="800" height="600" frameborder="0"></iframe> 
 Both overlapping distributions are still normal, so we can ascertain the same as prior as well as the fact side is likely not a strong indicator of earned gold. 
 
 In this second visualization, we look at how team kills varies depending on the side a team is on. 
@@ -98,7 +98,7 @@ First, let's take a look wether the missingness of **`xpat25`** is dependent on 
 **Significance Level:** 0.5
 
 Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the K-S statistic is shown below. 
-<iframe src="assets/EDKS.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe> 
+<iframe src="assets/EDKS.html" width="800" height="600" frameborder="0"></iframe> 
 In this permutation test, the p-value is less than the 0.5 which means we reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does infact depend on the gamelength column.
 
 Now, let's take a look wether the missingness of **`xpat25`** is dependent on **`side`**. 
@@ -119,7 +119,7 @@ The distribution of **`side`** when **`xpat25`** is missing and the distribution
 | Red    |                  0.49995 |                0.500747 |
 
 Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the Total Variation Test statistic is shown below. 
-<iframe src="assets/EDTVD.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe> 
+<iframe src="assets/EDTVD.html" width="800" height="600" frameborder="0"></iframe> 
 In this permutation test, the p-value is greater than the 0.5 which means we fail to reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does not depend on the **`side`** column.
 
 ## Hypothesis Testing
@@ -135,21 +135,32 @@ In our hypothesis test, we aim to determine whether there is a significant diffe
 **Significance Level**: 5 Percent
 
 Below is the sampling distribution for the test statistic:
-<iframe src="assets/HypTesyDist.html" style="border: none; padding: 0; margin: 0; width: 800px; height: 500px;"></iframe>
+<iframe src="assets/HypTesyDist.html" width="800" height="600" frameborder="0"></iframe>
+
+As a result of the hypothesis test that we performed, we achieved a p-value of 0.032. Thus we reject the null hypothesis, which indicates that the average difference between teamkills for teams on blue side is larger than teamkills for teams on red side. As a result we can infer that although side is randomly assigned to teams during a game, the side of the map a team is on in-game may have an affect on game-play statistics and results of matches. 
 
 ## Framing a Prediction Problem
-Previously, we have found that being on blue side may have a significant affect on team kills. Since statistics for blue and red side are different, are there specific statistics of gameplay like xpat25, csat25, barons, dragons, etc. that are higher as a result of being on Blue or Red side, and can we use these statistics to predict which side the player was on?
 
-To address this question, we can use a binary classification algorithm to predict wether or not they were on blue or red side. Therefore, our prediction problem is: Are we able to predict wether a team was blue or red side in a game based on other in-game statistics. In this model we intended to predict the side of the team based on teamkills and earnedgold. We attempted to do this for our baseline model which resulted in a model that was not accurate, which we will address in the next section. 
+Previously, we have found that being on blue side may have a significant affect on team kills. Since statistics for blue and red side are different, are there specific statistics of gameplay like xpat25, csat25, barons, dragons, etc. that are higher as a result of being on Blue or Red side; Can we use these statistics to predict which side the player was on?
 
-But as a result, we created a new iteration of our prediction problem, which is: Based on the difference in in-game statistics can we predict wether the winning side of a game was blue or red?. This allows for our classification model to have more accurate measures of differences between sides as apposed to general in-game statistics that are not in relation to the other side. Thus our response variable is wether the winner was red or blue which is included in the differences between team statistics dataframe. 
+To address this question, we pose this prediction problem that can be answered with a binary classification model: Based on the difference in in-game statistics can we predict wether the winning side of a game was blue or red?. This allows for our classification model to have more accurate measures of differences between sides as apposed to general in-game statistics that are not in relation to the other side. Thus our response variable is wether the winner was red or blue which is included in the differences between team statistics dataframe. A few lines of this dataframe a pictured below:
 
-In this section, we queried out gamelength less than 25 minutes in order to ensure no missing values in xpat25 and csat25. If a game ended before that time, games won't have xp or cs at 25 minutes, and since we want to be able to make accurate predictions the average game (most of which are greater than 25 minutes, the average game is 30 minutes). 
+|   teamkills |   earnedgold |   damagetochampions |   xpat25 |   csat25 |   dragons |   barons |
+|------------:|-------------:|--------------------:|---------:|---------:|----------:|---------:|
+|         -10 |        -5547 |              -23352 |    -3971 |      -97 |        -2 |       -0 |
+|         -13 |       -13375 |              -15276 |    -7746 |      -33 |        -3 |       -2 |
+|           9 |        10691 |               21256 |     2532 |        5 |         3 |        1 |
+|           3 |        -8804 |               14285 |    -3725 |      -35 |         2 |       -2 |
+|           5 |        10871 |               20942 |     1338 |      -16 |        -3 |        1 |
 
-In order to evaluate our model we will only be using accuracy. The reason we are not using F-1 scores and only using accuracy because our data is balanced with each game having a red or blue side, and therefore do not have to consider false positives and negatives in the evalution of our model. 
+The response variable that our model will predict is what the winning side a individual game is. We chose this as our response variable, because the game randomly assigns side to teams at the start of a game, but many players have an underlying opinion that blue side teams is more likely to win than red side teams. Furthermore, many players prefer to be on the blue side rather than the red side, for there is increased visibility of the map, unobstructed side bars. Blue side also has first pick in the champion they chose in the draft, which could potentially give them an advantage.
 
-The information that we would know at the time of prediction for the final model is the differences between the statistics for teamkills, earnedgold, damagetochampions, xpat25, csat25, dragons, and barons for our final model and the statistics themselves for the basline model. 
+We decided to use both F-1 Score and accuracy in our model's evaluation.The actual distribution of Blue side wins and Red side wins is slightly unbalanced with Red side winning 48% of the time and Blue side winning 52% of the time. We want to ensure that our modeling is not overpredicting Blue side wins, which is why we also want to use F-1 score to account for the slight underreprentation of Red side wins. Using F-1 score we will be evaluated, how well our model predicts both blue and red side wins.
+
+The information that we would know at the time of prediction for the final model is the differences between the statistics for teamkills, earnedgold, damagetochampions, xpat25, csat25, dragons, and  differences between the statistics for teamkills, earnedgold, for the basline model. 
 
 ## Baseline Model
+
 ## Final Model
+
 ## Fairness Analysis
