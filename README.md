@@ -204,9 +204,9 @@ Does our model perform suboptimally for games played in the Korean leagues (LCK 
 
 **Null Hypothesis:** Our model is fair, and its accuracy between games played in the Korean leagues and games played in the others leagues is the same.
 
-**Alternative Hypothesis:** Our model is not fair, and its accuracy for games played in the Korean leagues are greater then for games not in the LCK league. 
+**Alternative Hypothesis:** Our model is not fair, and its accuracy for games played in the Korean leagues are greater then for games played in the others leagues.
 
-**Test-Stat:** Difference in accuracy(Not Korean - Korean)
+**Test-Stat:** Difference in accuracy (Not Korean - Korean)
 
 **Significance Level:** 0.05
 
