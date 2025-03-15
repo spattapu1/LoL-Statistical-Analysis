@@ -95,11 +95,11 @@ First, let's take a look wether the missingness of **`xpat25`** is dependent on 
 
 **Test Statistic:** Kolmogorov-Smirnov Test Statistic
 
-**Significance Level:** 0.5
+**Significance Level:** 0.05
 
 Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the K-S statistic is shown below. 
 <iframe src="assets/EDKS.html" width="620" height="420" frameborder="0"></iframe> 
-In this permutation test, the p-value is less than the 0.5 which means we reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does infact depend on the gamelength column.
+In this permutation test, the p-value is less than the 0.05 which means we reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does infact depend on the gamelength column.
 
 Now, let's take a look wether the missingness of **`xpat25`** is dependent on **`side`**. 
 
@@ -109,7 +109,7 @@ Now, let's take a look wether the missingness of **`xpat25`** is dependent on **
 
 **Test Statistic:** Total Variation Distance
 
-**Significance Level:** 0.5
+**Significance Level:** 0.05
 
 The distribution of **`side`** when **`xpat25`** is missing and the distribution of **`side`** when **`xpat25`** is not missing are shown below: 
 
@@ -118,9 +118,9 @@ The distribution of **`side`** when **`xpat25`** is missing and the distribution
 | Blue   |                  0.50005 |                0.499253 |
 | Red    |                  0.49995 |                0.500747 |
 
-Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the Total Variation Test statistic is shown below. 
+Subsequent to the permutation tests, we find that the observed statistic is 0.0, with a p-value of 1. The empirical distribution of the Total Variation Test statistic is shown below. 
 <iframe src="assets/EDTVD.html" width="620" height="420" frameborder="0"></iframe> 
-In this permutation test, the p-value is greater than the 0.5 which means we fail to reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does not depend on the **`side`** column.
+In this permutation test, the p-value is greater than the 0.05 which means we fail to reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does not depend on the **`side`** column.
 
 ## Hypothesis Testing
 
