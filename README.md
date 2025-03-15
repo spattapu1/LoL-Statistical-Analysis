@@ -126,22 +126,22 @@ In this permutation test, the p-value is greater than the 0.5 which means we fai
 
 In our hypothesis test, we aim to determine whether there is a significant difference between the average team kills for the blue side and the red side. We want to understand the relationship between being on the red or blue side and the average kills per side. The motivation comes from wanting to determine whether the blue side is actually more likely to win than the red side, as team kills are likely related to the game outcome, making this an important test to explore.
 
-**Null Hypothesis**: The average team kills for blue and red sides is the same.
+**Null Hypothesis**: Team kills of teams on the blue side and teams on the red side have the same distribution.
 
-**Alternative Hypothesis**: The average team kills for blue side is greater then red side.
+**Alternative Hypothesis**: Team kills of teams on the blue side and teams on the red side are distributed differently.
 
 **Test Statistic**: Difference in Means of team kills for blue side and team kills for red side.
 
-**Significance Level**: 5 Percent
+**Significance Level**: 5%
 
 Below is the sampling distribution for the test statistic:
-<iframe src="assets/HypTesyDist.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="assets/HypTestDist.html" width="800" height="600" frameborder="0"></iframe>
 
-As a result of the hypothesis test that we performed, we achieved a p-value of 0.032. Thus we reject the null hypothesis, which indicates that the average difference between teamkills for teams on blue side is larger than teamkills for teams on red side. As a result we can infer that although side is randomly assigned to teams during a game, the side of the map a team is on in-game may have an affect on game-play statistics and results of matches. 
+As a result of the hypothesis test that we performed, we achieved a p-value of 0.0. Thus we reject the null hypothesis, which indicates that team kills of teams on the blue side and teams on the red side are distributed differently. As a result we can infer that although side is randomly assigned to teams during a game, the side of the map a team is on in-game may have an affect on game-play statistics and results of matches.
 
 ## Framing a Prediction Problem
 
-Previously, we have found that being on blue side may have a significant affect on team kills. Since statistics for blue and red side are different, are there specific statistics of gameplay like xpat25, csat25, barons, dragons, etc. that are higher as a result of being on Blue or Red side; Can we use these statistics to predict which side the player was on?
+Previously, we have found that team kills of teams on the blue side and teams on the red side are distributed differently. Since statistics for blue and red side are different, are there specific statistics of gameplay like xpat25, csat25, barons, dragons, etc. that are higher as a result of being on Blue or Red side; Can we use these statistics to predict which side the player was on?
 
 To address this question, we pose this prediction problem that can be answered with a binary classification model: Based on the difference in in-game statistics can we predict wether the winning side of a game was blue or red?. This allows for our classification model to have more accurate measures of differences between sides as apposed to general in-game statistics that are not in relation to the other side. Thus our response variable is wether the winner was red or blue which is included in the differences between team statistics dataframe. A few rows of this dataframe a pictured below:
 
@@ -161,27 +161,55 @@ The information that we would know at the time of prediction for the final model
 
 ## Baseline Model
 
+For the baseline model, we used a Random Forest Classifier, with two features: teamkills and earnedgold. Both of these features are quantitative, which meant that we didn't need to perform any encodings. Though because of the struture of the teams dataframe, which has two rows per game, one for each team that played, we found the differences between statistics per game between both team, which I addressed in the above section. 
+
+The current model is good with an accuracy of 0.9748. The model currently accuratly predicts 97.5% of the data. The F-1 score for this model is also good with a score of 0.9748 and similar to the accuracy. This means that the recall and percision are also relativley high, which make our baseline model already pretty accurate. This can be seen in the confusion matrix below. 
+
+<iframe src="assets/BaseCM.html" width="800" height="600" frameborder="0"></iframe>
+
+
 ## Final Model
+
+In our final model, we added the following features: damagetochampions, xpat25, csat25, dragons, and barons in addition to the features in our baseline model. 
+
+We tried to choose features that have an impact of the whether a side wins or not. Focusing on objectives like taking barons, and dragons can give teams a significant advantage, as by killing them teams get additional buffs and advantages when they are killed. Killing dragons can create buffs for the entire teams and killing it before the opposing team can allow that team to deny the opposing team buffs. Dragons killed can give a team significant adavtages through the game is likely to be related to which team wins.
+
+Barons are a similar neutral objectives in game but the advantage it provides is even greater then dragons. The Baron buff gives a team super minions in every lane on the map, this makes easier for the team with this buff to push down lanes and take enemy towers. Since barons provide massive advantage, the team that takes more barons (Barons respawn in the game though there is only one at a time), likely has a substainial advantage, and have a higher chance of winning. 
+
+Damagetochampions is vital to winning a game, as dealing more damage will allow a team to win team fights. Overall, by dealing more damage to champions on the opposing team, a team will have a greater chance of taking other objectives like barons and dragons since the other team is weaker. 
+
+Having a higher xpat25 will mean that champions of a particular team are stronger than the other, giving level advantages to players within a team, which contributes to their ability to win. 
+
+csat25 refers to creep score at 25 minutes, which is how many minions a team has killed at the 25 minute mark. Creep score has an impact on gold generation, and item advantages which will give teams with high creepscore and advantage in team fights and objectives as mentioned before.
+
+Therefore, we expect that these additional features will provide our model with the needed information to predict which side won. 
+
+Our final model uses a Random Forest Classifier, consistent with our baseline model, with 4 additional features as mentioned above. The hyperparameters that ended up performing best were a max depth of 15 and 500 n_estimators. We reached this conclusion by conducting a GridSearchCV on our model using two hyperparamters, max_depth and n_estimators, we tried a combination of other hyperparameters that failed to improve our model. We tested n_estimators on values 100 to 500, with a step count of 100, and max depth on these values here: 2, 5, 10, 15, None. 
+
+The accuracy score of our model now is 0.9836, which means that our model accurately predicts 98.3% of our data. The F-1 score of our model is also 0.9836 which means that our percision and recall scores are even closer to one then before. Though the improvment is small, our model predicts even more games correctly then in our baseline model. An image of of the confusion matrix for our final model pictured below:  
+
+<iframe src="assets/FinalCM.html" width="800" height="600" frameborder="0"></iframe>
+
 
 ## Fairness Analysis
 In this section we want to evaluate wether or not our model is fair, meaning that it performs the same for games within a group and games outside of the group.
 
-The question we pose to answer an aspect of this is: Does our model perform suboptimally for games played in the LCK league compared to other leagues?
+Does our model perform suboptimally for games played in the Korean leagues (LCK and LCKC) compared to other leagues?
 
-**Group X:** Games played within the LCK league
+**Group X:** Games played within Korean leagues
 
-**Group Y:** Games played outside of the LCK league
+**Group Y:** Games played outside of Korean leagues
 
 **Evaluation Metric:** Accuracy
 
-**Null Hypothesis:** Our model is fair, and its accuracy between games played in the LCK league and games played in the others leagues is the same.
+**Null Hypothesis:** Our model is fair, and its accuracy between games played in the Korean leagues and games played in the others leagues is the same.
 
-**Alternative Hypothesis:** Our model is not fair, and its accuracy for games played in the LCK league are greater then for games not in the LCK league. 
+**Alternative Hypothesis:** Our model is not fair, and its accuracy for games played in the Korean leagues are greater then for games not in the LCK league. 
 
-**Test-Stat:** Difference in accuracy(Not LCK - LCK)
+**Test-Stat:** Difference in accuracy(Not Korean - Korean)
 
 **Significance Level:** 0.05
 
 <iframe src="assets/fairness.html" width="800" height="600" frameborder="0"></iframe>
 
-After performing a permuatation test, we got a resulting p-value of 1, which is greater than our siginficance value, meaning we fail to reject our null hypothesis. This means that our model maintains a similar accuracy score for games played with LCK and outside LCK, meaning our model is fair and unbiased towards LCK league games. 
+After performing a permuatation test, we got a resulting p-value of 0.75, which is greater than our siginficance value, meaning we fail to reject our null hypothesis. This means that our model maintains a similar accuracy score for games played within Korean league and outside Korean league, meaning our model is fair and unbiased towards Korean league games. 
