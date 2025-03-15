@@ -163,7 +163,8 @@ The information that we would know at the time of prediction for the final model
 
 For the baseline model, we used a Random Forest Classifier, with two features: teamkills and earnedgold. Both of these features are quantitative, which meant that we didn't need to perform any encodings. Though because of the struture of the teams dataframe, which has two rows per game, one for each team that played, we found the differences between statistics per game between both team, which I addressed in the above section. 
 
-The current model is good with an accuracy of 0.9748. The model currently accuratly predicts 97.5% of the data. The F-1 score for this model is also good with a score of 0.9748 and similar to the accuracy. This means that the recall and percision are also relativley high, which make our baseline model already pretty accurate. This can be seen in the confusion matrix below. 
+The current model is good with an accuracy of 0.9748. The model currently accuratly predicts 97.5% of the data. The F-1 score for this model is also good with a score of 0.9748 and similar to the accuracy. This means that the recall and percision are also relativley high, which make our baseline model already pretty accurate. 
+This can be seen in the confusion matrix below. 
 
 <iframe src="assets/BaseCM.png" 
         style="width: 600px; height: 400px; border: none; overflow: hidden; object-fit: contain;">
@@ -188,7 +189,8 @@ Therefore, we expect that these additional features will provide our model with 
 
 Our final model uses a Random Forest Classifier, consistent with our baseline model, with 4 additional features as mentioned above. The hyperparameters that ended up performing best were a max depth of 15 and 500 n_estimators. We reached this conclusion by conducting a GridSearchCV on our model using two hyperparamters, max_depth and n_estimators, we tried a combination of other hyperparameters that failed to improve our model. We tested n_estimators on values 100 to 500, with a step count of 100, and max depth on these values here: 2, 5, 10, 15, None. 
 
-The accuracy score of our model now is 0.9836, which means that our model accurately predicts 98.3% of our data. The F-1 score of our model is also 0.9836 which means that our percision and recall scores are even closer to one then before. Though the improvment is small, our model predicts even more games correctly then in our baseline model. An image of of the confusion matrix for our final model pictured below:  
+The accuracy score of our model now is 0.9836, which means that our model accurately predicts 98.3% of our data. The F-1 score of our model is also 0.9836 which means that our percision and recall scores are even closer to one then before. Though the improvment is small, our model predicts even more games correctly then in our baseline model. 
+An image of of the confusion matrix for our final model pictured below:  
 
 <iframe src="assets/FinalCM.png" 
         style="width: 600px; height: 400px; border: none; overflow: hidden; object-fit: contain;">
