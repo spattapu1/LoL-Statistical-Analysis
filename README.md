@@ -51,22 +51,22 @@ Here’s the first five rows of the cleaned dataset named teams:
 
 ### Univariate Analysis:
 We conducted a univariate analysis on the earned gold per team. 
-<iframe src="assets/EarnedGold.html" width="800" height="600" frameborder="0"></iframe> 
+<iframe src="assets/EarnedGold.html" width="600" height="400" frameborder="0"></iframe> 
 The histogram shows a normal distribution meaning that earned gold per team is symmetrically distributed around the mean. The normal shape also implies that earned gold is likely independently and identically distributed (i.i.d.), indicating that the underlying process generating earned gold is consistent and stable across teams, therefore is a reliable statistic for analyzing team behavior.
 
 We also conducted a univariate analysis on the team kills per team. 
-<iframe src="assets/TeamKills.html" width="800" height="600" frameborder="0"></iframe> 
+<iframe src="assets/TeamKills.html" width="600" height="400" frameborder="0"></iframe> 
 The histogram shows a relativley normal distribution that is right-skewed meaning that team kills per team is mostly symmetrically distributed around the mean though the mean is lower and few teams obtain an excpetionally high number of kills. The relativley normal shape also implies that team kills is likely independently and identically distributed (i.i.d.), the way players obtain kills is relavtively consistent across teams (though some are much higher) and, therefore is a reliable statistic for analyzing team behavior.
 
 ### Bivariate Analysis:
 For our bivariate analysis, we decided to focus on **`side`** which is central to much of our analysis later on, and may potentially provide insights about the data.  
 
 In this first visualization, we look at how earned gold varies depending on the side a team is on. 
-<iframe src="assets/EarnedGoldSide.html" width="800" height="600" frameborder="0"></iframe> 
+<iframe src="assets/EarnedGoldSide.html" width="600" height="400" frameborder="0"></iframe> 
 Both overlapping distributions are still normal, so we can ascertain the same as prior as well as the fact side is likely not a strong indicator of earned gold. 
 
 In this second visualization, we look at how team kills varies depending on the side a team is on. 
-<iframe src="assets/TeamKillsSide.html" width="800" height="600" frameborder="0"></iframe> 
+<iframe src="assets/TeamKillsSide.html" width="600" height="400" frameborder="0"></iframe> 
 Both overlapping distributions still have a similar overall direction, but the shape of the distributions look slightly different which may suggest that teamkills could be an indicator of side. It's at least likely a stronger indicator of side then earned gold. 
 
 ### Interesting Aggregates
@@ -98,7 +98,7 @@ First, let's take a look wether the missingness of **`xpat25`** is dependent on 
 **Significance Level:** 0.5
 
 Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the K-S statistic is shown below. 
-<iframe src="assets/EDKS.html" width="800" height="600" frameborder="0"></iframe> 
+<iframe src="assets/EDKS.html" width="600" height="400" frameborder="0"></iframe> 
 In this permutation test, the p-value is less than the 0.5 which means we reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does infact depend on the gamelength column.
 
 Now, let's take a look wether the missingness of **`xpat25`** is dependent on **`side`**. 
@@ -119,7 +119,7 @@ The distribution of **`side`** when **`xpat25`** is missing and the distribution
 | Red    |                  0.49995 |                0.500747 |
 
 Subsequent to the permutation tests, we find that the observed statistic is 0.992025507599341, with a p-value of 0. The empirical distribution of the Total Variation Test statistic is shown below. 
-<iframe src="assets/EDTVD.html" width="800" height="600" frameborder="0"></iframe> 
+<iframe src="assets/EDTVD.html" width="600" height="400" frameborder="0"></iframe> 
 In this permutation test, the p-value is greater than the 0.5 which means we fail to reject the null hypothesis. Therefore, the missingness of the **`xpat25`** column does not depend on the **`side`** column.
 
 ## Hypothesis Testing
@@ -135,7 +135,7 @@ In our hypothesis test, we aim to determine whether there is a significant diffe
 **Significance Level**: 0.05
 
 Below is the sampling distribution for the test statistic:
-<iframe src="assets/HypTestDist.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="assets/HypTestDist.html" width="600" height="400" frameborder="0"></iframe>
 
 As a result of the hypothesis test that we performed, we achieved a p-value of 0.0. Thus we reject the null hypothesis, which indicates that team kills of teams on the blue side and teams on the red side are distributed differently. As a result we can infer that although side is randomly assigned to teams during a game, the side of the map a team is on in-game may have an affect on game-play statistics and results of matches.
 
@@ -166,8 +166,9 @@ For the baseline model, we used a Random Forest Classifier, with two features: t
 The current model is good with an accuracy of 0.9748. The model currently accuratly predicts 97.5% of the data. The F-1 score for this model is also good with a score of 0.9748 and similar to the accuracy. This means that the recall and percision are also relativley high, which make our baseline model already pretty accurate. This can be seen in the confusion matrix below. 
 
 <iframe src="assets/BaseCM.png" 
-        style="width: 400px; height: 300px; border: none; transform: scale(0.5); transform-origin: top left;">
+        style="width: 400px; height: 300px; border: none; overflow: hidden; object-fit: contain;">
 </iframe>
+
 
 ## Final Model
 
@@ -189,7 +190,9 @@ Our final model uses a Random Forest Classifier, consistent with our baseline mo
 
 The accuracy score of our model now is 0.9836, which means that our model accurately predicts 98.3% of our data. The F-1 score of our model is also 0.9836 which means that our percision and recall scores are even closer to one then before. Though the improvment is small, our model predicts even more games correctly then in our baseline model. An image of of the confusion matrix for our final model pictured below:  
 
-<iframe src="assets/FinalCM.png" width="auto" height="auto" frameborder="0"></iframe>
+<iframe src="assets/FinalCM.png" 
+        style="width: 400px; height: 300px; border: none; overflow: hidden; object-fit: contain;">
+</iframe>
 
 
 ## Fairness Analysis
@@ -211,6 +214,6 @@ Does our model perform suboptimally for games played in the Korean leagues (LCK 
 
 **Significance Level:** 0.05
 
-<iframe src="assets/fairness.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="assets/fairness.html" width="600" height="400" frameborder="0"></iframe>
 
 After performing a permuatation test, we got a resulting p-value of 0.77, which is greater than our siginficance value, meaning we fail to reject our null hypothesis. This means that our model maintains a similar accuracy score for games played within Korean league and outside Korean league, meaning our model is fair and unbiased towards Korean league games. 
