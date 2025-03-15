@@ -157,7 +157,7 @@ The response variable that our model will predict is what the winning side a ind
 
 We decided to use both F-1 Score and accuracy in our model's evaluation.The actual distribution of blue side wins and red side wins is slightly unbalanced with red side winning 48% of the time and blue side winning 52% of the time. We want to ensure that our modeling is not overpredicting blue side wins, which is why we also want to use F-1 score to account for the slight underreprentation of red side wins. Using F-1 score we will be evaluated, how well our model predicts both blue and red side wins.
 
-The information that we would know at the time of prediction for the final model is the differences between the statistics for **`teamkills`**, **`earnedgold`**, **`damagetochampions`**, **`xpat25`**, csat25, **`dragons`**, and **`barons`**, differences between the statistics and **`teamkills`**, **`earnedgold`**, for the basline model. 
+The information that we would know at the time of prediction for the final model is the differences between the statistics for **`teamkills`**, **`earnedgold`**, **`damagetochampions`**, **`xpat25`**, **`csat25`**, **`dragons`**, and **`barons`**, differences between the statistics and **`teamkills`**, **`earnedgold`**, for the basline model. 
 
 ## Baseline Model
 
