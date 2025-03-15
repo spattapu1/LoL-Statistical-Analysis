@@ -165,8 +165,9 @@ For the baseline model, we used a Random Forest Classifier, with two features: t
 
 The current model is good with an accuracy of 0.9748. The model currently accuratly predicts 97.5% of the data. The F-1 score for this model is also good with a score of 0.9748 and similar to the accuracy. This means that the recall and percision are also relativley high, which make our baseline model already pretty accurate. This can be seen in the confusion matrix below. 
 
-<iframe src="assets/BaseCM.png" style="width: 400px; height: 300px; border: none;"></iframe>
-
+<iframe src="assets/BaseCM.png" 
+        style="width: 400px; height: 300px; border: none; transform: scale(0.5); transform-origin: top left;">
+</iframe>
 
 ## Final Model
 
