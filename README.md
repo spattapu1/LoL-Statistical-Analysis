@@ -212,4 +212,4 @@ Does our model perform suboptimally for games played in the Korean leagues (LCK 
 
 <iframe src="assets/fairness.html" width="800" height="600" frameborder="0"></iframe>
 
-After performing a permuatation test, we got a resulting p-value of 0.75, which is greater than our siginficance value, meaning we fail to reject our null hypothesis. This means that our model maintains a similar accuracy score for games played within Korean league and outside Korean league, meaning our model is fair and unbiased towards Korean league games. 
+After performing a permuatation test, we got a resulting p-value of 0.77, which is greater than our siginficance value, meaning we fail to reject our null hypothesis. This means that our model maintains a similar accuracy score for games played within Korean league and outside Korean league, meaning our model is fair and unbiased towards Korean league games. 
