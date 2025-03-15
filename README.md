@@ -141,7 +141,7 @@ As a result of the hypothesis test that we performed, we achieved a p-value of 0
 
 ## Framing a Prediction Problem
 
-Previously, we have found that team kills of teams on the blue side and teams on the red side are distributed differently. Since statistics for blue and red side are different, are there specific statistics of gameplay like **`xpat25`**, csat25, barons, dragons, etc. that are higher as a result of being on blue or red side; Can we use these statistics to predict which side the player was on?
+Previously, we have found that team kills of teams on the blue side and teams on the red side are distributed differently. Since statistics for blue and red side are different, are there specific statistics of gameplay like **`xpat25`**, **`csat25`**, **`barons`**, **`dragons`**, etc. that are higher as a result of being on blue or red side; Can we use these statistics to predict which side the player was on?
 
 To address this question, we pose this prediction problem that can be answered with a binary classification model: Based on the difference in in-game statistics can we predict wether the winning side of a game was blue or red?. This allows for our classification model to have more accurate measures of differences between sides as apposed to general in-game statistics that are not in relation to the other side. Thus our response variable is wether the winner was red or blue which is included in the differences between team statistics dataframe. A few rows of this dataframe a pictured below:
 
@@ -157,11 +157,11 @@ The response variable that our model will predict is what the winning side a ind
 
 We decided to use both F-1 Score and accuracy in our model's evaluation.The actual distribution of blue side wins and red side wins is slightly unbalanced with red side winning 48% of the time and blue side winning 52% of the time. We want to ensure that our modeling is not overpredicting blue side wins, which is why we also want to use F-1 score to account for the slight underreprentation of red side wins. Using F-1 score we will be evaluated, how well our model predicts both blue and red side wins.
 
-The information that we would know at the time of prediction for the final model is the differences between the statistics for **'teamkills'**, **'earnedgold'**, **`damagetochampions`**, **`xpat25`**, csat25, **'dragons'**, and **'barons'**, differences between the statistics and **'teamkills'**, **'earnedgold'**, for the basline model. 
+The information that we would know at the time of prediction for the final model is the differences between the statistics for **`teamkills`**, **`earnedgold`**, **`damagetochampions`**, **`xpat25`**, csat25, **`dragons`**, and **`barons`**, differences between the statistics and **`teamkills`**, **`earnedgold`**, for the basline model. 
 
 ## Baseline Model
 
-For the baseline model, we used a Random Forest Classifier, with two features: teamkills and earnedgold. Both of these features are quantitative, which meant that we didn't need to perform any encodings. Though because of the struture of the teams dataframe, which has two rows per game, one for each team that played, we found the differences between statistics per game between both team, which I addressed in the above section. 
+For the baseline model, we used a Random Forest Classifier, with two features: **`teamkills`** and **`earnedgold`**. Both of these features are quantitative, which meant that we didn't need to perform any encodings. Though because of the struture of the teams dataframe, which has two rows per game, one for each team that played, we found the differences between statistics per game between both team, which I addressed in the above section. 
 
 The current model is good with an accuracy of 0.9748. The model currently accuratly predicts 97.5% of the data. The F-1 score for this model is also good with a score of 0.9748 and similar to the accuracy. This means that the recall and percision are also relativley high, which make our baseline model already pretty accurate. 
 This can be seen in the confusion matrix below. 
@@ -173,7 +173,7 @@ This can be seen in the confusion matrix below.
 
 ## Final Model
 
-In our final model, we added the following features: **`damagetochampions`**, **`xpat25`**, **'csat25'**, **'dragons'**, and **'barons'** in addition to the features in our baseline model. 
+In our final model, we added the following features: **`damagetochampions`**, **`xpat25`**, **`csat25`**, **`dragons`**, and **`barons`** in addition to the features in our baseline model. 
 
 We tried to choose features that have an impact of the whether a side wins or not. Focusing on objectives like taking barons, and dragons can give teams a significant advantage, as by killing them teams get additional buffs and advantages when they are killed. Killing dragons can create buffs for the entire teams and killing it before the opposing team can allow that team to deny the opposing team buffs. Dragons killed can give a team significant advantages through the game is likely to be related to which team wins.
 
@@ -183,7 +183,7 @@ Barons are a similar neutral objectives in game but the advantage it provides is
 
 Having a higher **`xpat25`** will mean that champions of a particular team are stronger than the other, giving level advantages to players within a team, which contributes to their ability to win. 
 
-**'csat25'** refers to creep score at 25 minutes, which is how many minions a team has killed at the 25 minute mark. Creep score has an impact on gold generation, and item advantages which will give teams with high creepscore and advantage in team fights and objectives as mentioned before.
+**`csat25`** refers to creep score at 25 minutes, which is how many minions a team has killed at the 25 minute mark. Creep score has an impact on gold generation, and item advantages which will give teams with high creepscore and advantage in team fights and objectives as mentioned before.
 
 Therefore, we expect that these additional features will provide our model with the needed information to predict which side won. 
 
