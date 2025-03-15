@@ -165,7 +165,7 @@ For the baseline model, we used a Random Forest Classifier, with two features: t
 
 The current model is good with an accuracy of 0.9748. The model currently accuratly predicts 97.5% of the data. The F-1 score for this model is also good with a score of 0.9748 and similar to the accuracy. This means that the recall and percision are also relativley high, which make our baseline model already pretty accurate. This can be seen in the confusion matrix below. 
 
-<iframe src="assets/BaseCM.pdf" width="800" height="600" frameborder="0"></iframe>
+<iframe src="assets/BaseCM.png" width="800" height="600" frameborder="0"></iframe>
 
 
 ## Final Model
@@ -188,7 +188,7 @@ Our final model uses a Random Forest Classifier, consistent with our baseline mo
 
 The accuracy score of our model now is 0.9836, which means that our model accurately predicts 98.3% of our data. The F-1 score of our model is also 0.9836 which means that our percision and recall scores are even closer to one then before. Though the improvment is small, our model predicts even more games correctly then in our baseline model. An image of of the confusion matrix for our final model pictured below:  
 
-<iframe src="assets/FinalCM.pdf" width="800" height="600" frameborder="0"></iframe>
+<iframe src="assets/FinalCM.png" width="800" height="600" frameborder="0"></iframe>
 
 
 ## Fairness Analysis
