@@ -77,7 +77,7 @@ Here are some intresting aggregates we can explore within the data:
 | Blue   | 0.523086 |     14.8736 |      36566.6 |             67612.1 |  51893.3 |  820.958 |   2.14002 | 0.669482 |
 | Red    | 0.476914 |     14.3222 |      35947.7 |             66651.5 |  51831.3 |  822.529 |   2.35135 | 0.681588 |
 
-We grouped by side in order to see the difference in statistics between teams on the blue vs red side, we then gathered the quantitiave columns in order to find the means of each statistic with respect to side. This way we can see the differences in averages between each statistic with respect to side. Here we find that, the teams on Blue side tend to win more, has more team kills, has more earned gold, gives more damage to enemy champions, more xp at 25 minutes on average but Red side has more dragons, more barons and a larger creep score at 25 minutes on average then Blue side. Though when looking at these aggregate, we do have to realize that these differences in averages are marginal. 
+We grouped by side in order to see the difference in statistics between teams on the blue vs. red side, we then gathered the quantitiave columns in order to find the means of each statistic with respect to side. This way we can see the differences in averages between each statistic with respect to side. Here we find that, the teams on Blue side tend to win more, has more team kills, has more earned gold, gives more damage to enemy champions, more xp at 25 minutes on average but Red side has more dragons, more barons and a larger creep score at 25 minutes on average then Blue side. Though when looking at these aggregate, we do have to realize that these differences in averages are marginal. 
 
 ## Assessment of Missingness
 
@@ -141,7 +141,7 @@ As a result of the hypothesis test that we performed, we achieved a p-value of 0
 
 ## Framing a Prediction Problem
 
-Previously, we have found that team kills of teams on the blue side and teams on the red side are distributed differently. Since statistics for blue and red side are different, are there specific statistics of gameplay like xpat25, csat25, barons, dragons, etc. that are higher as a result of being on Blue or Red side; Can we use these statistics to predict which side the player was on?
+Previously, we have found that team kills of teams on the blue side and teams on the red side are distributed differently. Since statistics for blue and red side are different, are there specific statistics of gameplay like **`xpat25`**, csat25, barons, dragons, etc. that are higher as a result of being on blue or red side; Can we use these statistics to predict which side the player was on?
 
 To address this question, we pose this prediction problem that can be answered with a binary classification model: Based on the difference in in-game statistics can we predict wether the winning side of a game was blue or red?. This allows for our classification model to have more accurate measures of differences between sides as apposed to general in-game statistics that are not in relation to the other side. Thus our response variable is wether the winner was red or blue which is included in the differences between team statistics dataframe. A few rows of this dataframe a pictured below:
 
@@ -153,11 +153,11 @@ To address this question, we pose this prediction problem that can be answered w
 |           3 |        -8804 |               14285 |    -3725 |      -35 |         2 |       -2 |
 |           5 |        10871 |               20942 |     1338 |      -16 |        -3 |        1 |
 
-The response variable that our model will predict is what the winning side a individual game is. We chose this as our response variable, because the game randomly assigns side to teams at the start of a game, but many players have an underlying opinion that blue side teams is more likely to win than red side teams. Furthermore, many players prefer to be on the blue side rather than the red side, for there is increased visibility of the map, unobstructed side bars. Blue side also has first pick in the champion they chose in the draft, which could potentially give them an advantage.
+The response variable that our model will predict is what the winning side a individual game is. We chose this as our response variable, because the game randomly assigns side to teams at the start of a game, but many players have an underlying opinion that blue side teams is more likely to win than red side teams. Furthermore, many players prefer to be on the blue side rather than the red side, for there is increased visibility of the map, unobstructed side bars. blue side also has first pick in the champion they chose in the draft, which could potentially give them an advantage.
 
-We decided to use both F-1 Score and accuracy in our model's evaluation.The actual distribution of Blue side wins and Red side wins is slightly unbalanced with Red side winning 48% of the time and Blue side winning 52% of the time. We want to ensure that our modeling is not overpredicting Blue side wins, which is why we also want to use F-1 score to account for the slight underreprentation of Red side wins. Using F-1 score we will be evaluated, how well our model predicts both blue and red side wins.
+We decided to use both F-1 Score and accuracy in our model's evaluation.The actual distribution of blue side wins and red side wins is slightly unbalanced with red side winning 48% of the time and blue side winning 52% of the time. We want to ensure that our modeling is not overpredicting blue side wins, which is why we also want to use F-1 score to account for the slight underreprentation of red side wins. Using F-1 score we will be evaluated, how well our model predicts both blue and red side wins.
 
-The information that we would know at the time of prediction for the final model is the differences between the statistics for teamkills, earnedgold, damagetochampions, xpat25, csat25, dragons, and  differences between the statistics for teamkills, earnedgold, for the basline model. 
+The information that we would know at the time of prediction for the final model is the differences between the statistics for **'teamkills'**, **'earnedgold'**, **`damagetochampions`**, **`xpat25`**, csat25, **'dragons'**, and **'barons'**, differences between the statistics and **'teamkills'**, **'earnedgold'**, for the basline model. 
 
 ## Baseline Model
 
@@ -173,17 +173,17 @@ This can be seen in the confusion matrix below.
 
 ## Final Model
 
-In our final model, we added the following features: damagetochampions, xpat25, csat25, dragons, and barons in addition to the features in our baseline model. 
+In our final model, we added the following features: **`damagetochampions`**, **`xpat25`**, **'csat25'**, **'dragons'**, and **'barons'** in addition to the features in our baseline model. 
 
-We tried to choose features that have an impact of the whether a side wins or not. Focusing on objectives like taking barons, and dragons can give teams a significant advantage, as by killing them teams get additional buffs and advantages when they are killed. Killing dragons can create buffs for the entire teams and killing it before the opposing team can allow that team to deny the opposing team buffs. Dragons killed can give a team significant adavtages through the game is likely to be related to which team wins.
+We tried to choose features that have an impact of the whether a side wins or not. Focusing on objectives like taking barons, and dragons can give teams a significant advantage, as by killing them teams get additional buffs and advantages when they are killed. Killing dragons can create buffs for the entire teams and killing it before the opposing team can allow that team to deny the opposing team buffs. Dragons killed can give a team significant advantages through the game is likely to be related to which team wins.
 
 Barons are a similar neutral objectives in game but the advantage it provides is even greater then dragons. The Baron buff gives a team super minions in every lane on the map, this makes easier for the team with this buff to push down lanes and take enemy towers. Since barons provide massive advantage, the team that takes more barons (Barons respawn in the game though there is only one at a time), likely has a substainial advantage, and have a higher chance of winning. 
 
-Damagetochampions is vital to winning a game, as dealing more damage will allow a team to win team fights. Overall, by dealing more damage to champions on the opposing team, a team will have a greater chance of taking other objectives like barons and dragons since the other team is weaker. 
+**`damagetochampions`** is vital to winning a game, as dealing more damage will allow a team to win team fights. Overall, by dealing more damage to champions on the opposing team, a team will have a greater chance of taking other objectives like barons and dragons since the other team is weaker. 
 
-Having a higher xpat25 will mean that champions of a particular team are stronger than the other, giving level advantages to players within a team, which contributes to their ability to win. 
+Having a higher **`xpat25`** will mean that champions of a particular team are stronger than the other, giving level advantages to players within a team, which contributes to their ability to win. 
 
-csat25 refers to creep score at 25 minutes, which is how many minions a team has killed at the 25 minute mark. Creep score has an impact on gold generation, and item advantages which will give teams with high creepscore and advantage in team fights and objectives as mentioned before.
+**'csat25'** refers to creep score at 25 minutes, which is how many minions a team has killed at the 25 minute mark. Creep score has an impact on gold generation, and item advantages which will give teams with high creepscore and advantage in team fights and objectives as mentioned before.
 
 Therefore, we expect that these additional features will provide our model with the needed information to predict which side won. 
 
@@ -195,7 +195,6 @@ An image of of the confusion matrix for our final model pictured below:
 <p align="center">
   <img src="assets/FinalCM.png" alt="Description" style="width: 400px; height: auto;" />
 </p>
-
 
 ## Fairness Analysis
 In this section we want to evaluate wether or not our model is fair, meaning that it performs the same for games within a group and games outside of the group.
